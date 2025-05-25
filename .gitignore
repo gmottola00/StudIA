@@ -1,0 +1,23 @@
+# Git generale
+.DS_Store
+Thumbs.db
+
+# Angular (frontend)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.env
+
+# Python / FastAPI (backend)
+backend/__pycache__/
+backend/*.py[cod]
+backend/.env
+backend/.pytest_cache/
+backend/venv/
+backend/.mypy_cache/
+backend/.pylint.d/
+
+# VSCode & IDE vari
+.vscode/
+.idea/
+*.swp
