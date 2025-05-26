@@ -1,6 +1,6 @@
 from typing import Optional, List
 from supabase import Client
-from models import Document
+from app.models.document import Document
 
 class DocumentManager:
     """
@@ -11,12 +11,13 @@ class DocumentManager:
         self.client = client
         self.table = self.client.table("documents")
 
-    def insert(self, user_id: str, original_filename: str, file_url: str, parsed_text: Optional[str] = None) -> Document:
+    def insert(self, user_id: str, course_id: str, original_filename: str, file_url: str, parsed_text: Optional[str] = None) -> Document:
         """
         Inserisce un nuovo documento e restituisce il record creato come Document.
         """
         data = {
             "user_id": user_id,
+            "course_id": course_id,
             "original_filename": original_filename,
             "file_url": file_url,
             "parsed_text": parsed_text

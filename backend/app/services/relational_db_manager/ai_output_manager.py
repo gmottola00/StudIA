@@ -1,19 +1,6 @@
-# ai_output_manager.py
-
 from typing import List, Optional, Dict, Any
-from datetime import datetime
 from supabase import Client
-from pydantic import BaseModel
-
-
-class AIOutput(BaseModel):
-    id: Optional[str]
-    document_id: str
-    type: str        # 'summary', 'quiz', 'flashcard', 'mindmap', 'audio'
-    format: str      # 'text', 'json', 'url', 'mp3', 'base64'
-    content: str
-    created_at: Optional[datetime]
-
+from app.models.ai_output import AIOutput
 
 class AIOutputManager:
     def __init__(self, supabase: Client, table_name: str = "ai_outputs"):
