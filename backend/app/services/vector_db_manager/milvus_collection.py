@@ -1,10 +1,3 @@
-"""
-Modulo per la gestione delle collection del Milvus Vector Store
-
-Authors: Gianmarco Mottola
-Date: //2024
-
-"""
 from pymilvus import (
     DataType,
     utility,
