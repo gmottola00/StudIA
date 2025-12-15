@@ -16,8 +16,11 @@ class CourseUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
 
-@router.post("/", response_model=Course, status_code=status.HTTP_201_CREATED)
+@router.post("/courses", response_model=Course, status_code=status.HTTP_201_CREATED)
 def create_course(payload: CourseCreate, supabase=Depends(get_supabase_service)):
+    """
+    Create a new course.
+    """
     return supabase.courses.insert(
         user_id=payload.user_id,
         name=payload.name,
@@ -31,8 +34,11 @@ def get_course(course_id: str, supabase=Depends(get_supabase_service)):
         raise HTTPException(status_code=404, detail="Course not found")
     return course
 
-@router.get("/", response_model=List[Course])
+@router.get("/courses", response_model=List[Course])
 def list_courses(user_id: str, supabase=Depends(get_supabase_service)):
+    """
+    List all courses for a specific user.
+    """
     return supabase.courses.get_all(user_id)
 
 @router.patch("/{course_id}", response_model=Course)
